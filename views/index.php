@@ -68,6 +68,7 @@ require '../controller/quiz.func.php';
     </div>
     <footer>
         MON FOOTER, PAS LE TIEN &copy;
+        <a href="#">Conditions d'utilisation</a>
     </footer>
 </body>
 </html>
