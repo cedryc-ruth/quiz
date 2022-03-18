@@ -18,6 +18,13 @@ if(isset($_POST['submit'])) {
     <title>Administration</title>
 </head>
 <body>
+<header>
+    <img src="./images/quiz-logo.png" alt="logo">
+    <a href="index.php"><h1>Titre du site</h1></a>
+</header>
+<div>
+    <a href="index.php">Accueil</a>
+</div>
     <form action="#" method="post" enctype="multipart/form-data">
         <Label>Logo du site :</Label>
         <input type="hidden" name="MAX_FILE_SIZE" value="3000000">

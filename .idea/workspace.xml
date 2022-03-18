@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c407b974-32e6-481b-b25a-568e0b0503f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/views/admin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/images/quiz-logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/uploader.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/uploader.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/quiz.func.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/quiz.func.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/images/quiz-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/views/images/quiz-logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1647612389431</updated>
       <workItem from="1647612390433" duration="177000" />
-      <workItem from="1647612821722" duration="5791000" />
+      <workItem from="1647612821722" duration="7332000" />
     </task>
     <servers />
   </component>
