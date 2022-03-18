@@ -16,9 +16,13 @@ require '../controller/quiz.func.php';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Accueil</title>
 </head>
 <body>
+    <header>
+        <img src="#" alt="logo">
+        <h1>Titre du site</h1>
+    </header>
 
     <div>
         <form action="#" method="get">
@@ -33,9 +37,11 @@ require '../controller/quiz.func.php';
             $cpt = 0;
             foreach ($list as $quiz) {
                 $titre = $quiz['Titre'];
-                if (isset($filtre) && str_contains($titre, $filtre) || str_contains(strtolower($titre), $filtre)) {
-                    quizDisplayer($quiz['Titre'], $quiz['Illustration'], $quiz['Auteur'], $quiz['Questions']);
-                    $cpt++;
+                if (isset($filtre)) {
+                    if (str_contains($titre, $filtre) || str_contains(strtolower($titre), $filtre)) {
+                        quizDisplayer($quiz['Titre'], $quiz['Illustration'], $quiz['Auteur'], $quiz['Questions']);
+                        $cpt++;
+                    }
                 } elseif (!isset($filtre)) {
                     quizDisplayer($quiz['Titre'], $quiz['Illustration'], $quiz['Auteur'], $quiz['Questions']);
                 }
@@ -45,5 +51,8 @@ require '../controller/quiz.func.php';
                 <h3>Pas de résultat !</h3>
             <?php } ?>
     </div>
+    <footer>
+        MON FOOTER, PAS LE TIEN &copy;
+    </footer>
 </body>
 </html>
