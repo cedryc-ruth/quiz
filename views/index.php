@@ -21,7 +21,7 @@ require '../controller/quiz.func.php';
     <title>Accueil</title>
 </head>
 <body>
-    <header>
+    <header style="max-width: max-content">
         <img src="./images/quiz-logo.png" alt="logo">
         <a href="index.php"><h1>Titre du site</h1></a>
     </header>
