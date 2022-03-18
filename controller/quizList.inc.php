@@ -6,7 +6,7 @@ $list = [
         "Illustration" => "./images/quiz1.png",
         "Auteur" => "Latifa",
         "Questions" => [
-            "Quelle est la capitale du Péru ?",
+            "Quelle est la capitale du Pérou ?",
             "Quelle est la capitale l'Europe ?",
             "Quelle est la capitale de l'amour ?"
         ]
