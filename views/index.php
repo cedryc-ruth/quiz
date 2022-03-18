@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>coucou encore une fois</h1>
+<header>
+    <img src="#" alt="logo">
+    <h1>Titre du site</h1>
+</header>
 </body>
 </html>
