@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    /*height: 100%;*/
+}
+header{
+    background-color: lightblue;
+    width: 100%;
+}
+#header_container{
+    display: inline-flex;
+    width: 100%;
+}
+#logo_container{
+    max-width: 20%;
+}
+#header_main{
+    width: 50%;
+}
+
+#login_form{
+    display: block;
+    float: right;
+    width: 30%;
+}
+
+#logo{
+    height: 128px;
+}
+

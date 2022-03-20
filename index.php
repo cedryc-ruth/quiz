@@ -1,10 +1,10 @@
 <?php
-
+/*
 // list of quiz
-require '../controller/quizList.inc.php';
+require '../controllers/quizList.inc.php';
 
 // functions
-require '../controller/quiz.func.php';
+require '../controllers/quiz.func.php';
 
     if (isset($_GET['titre'])) {
         $quizToDisplay = $_GET['titre'];
@@ -72,3 +72,61 @@ require '../controller/quiz.func.php';
     </footer>
 </body>
 </html>
+*/
+session_start();
+$_SESSION['auth'] = 1;
+$_SESSION['admin'] = 1;
+# Prise du temps actuel au début du script
+$time_start = microtime(true);
+
+# Variables globales du site
+define('CHEMIN_MODELS','models/');
+define('CHEMIN_VUES','views/');
+define('CHEMIN_CONTROLEURS','controllers/');
+define('EMAIL','guillaume.stordeur@student.epfc.eu');
+define('DBHOST', 'localhost');
+define('DBNAME','quiz');
+define('DBLOGIN', 'root');
+define('DBPASS', '');
+$date = date("j/m/Y");
+
+# Require des classes automatisé
+function chargerClasse($classe) {
+    require 'models/' . $classe . '.class.php';
+}
+
+# Connexion a la database
+require_once (CHEMIN_MODELS . 'Db.php');
+$db = Db::getInstance();
+
+spl_autoload_register('chargerClasse');
+
+# Ecrire ici le header de toutes pages HTML
+require_once(CHEMIN_VUES . 'header.php');
+
+# Tester si une variable GET 'action' est précisée dans l'URL index.php?action=...
+$action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
+# Quelle action est demandée ?
+switch($action) {
+    case 'login':
+        require_once('controllers/LoginController.php');
+        $controller = new LoginController($db);
+        break;
+    case 'admin':
+        require_once('controllers/AdminController.php');
+        $controller = new AdminController($db);
+        break;
+    default: # Par défaut, le contrôleur de l'accueil est sélectionné
+        require_once('controllers/AccueilController.php');
+        $controller = new AccueilController($db);
+        break;
+}
+# Exécution du contrôleur correspondant à l'action demandée
+$controller->run();
+
+$time_end = microtime(true);
+$time = number_format(($time_end - $time_start)*1000,6);
+# Ecrire ici le footer du site de toutes pages HTML
+require_once(CHEMIN_VUES . 'footer.php');
+
+?>
