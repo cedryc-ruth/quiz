@@ -37,6 +37,34 @@ class Db
         else return 0;
     }
 
+    public function insert_user($username, $email, $pwd, $sexe){
+        $hash_pwd = password_hash($pwd, CRYPT_BLOWFISH);
+        $query = "INSERT INTO `user` (`username`, `password`, `type`, `activated`) values(:username, :password, 1, 1)";
+        $ps = $this->_db->prepare($query);
+        $ps->bindValue(':password', $hash_pwd, PDO::PARAM_STR);
+        $ps->bindValue(':username', $username, PDO::PARAM_STR);
+
+        if($ps->execute()){
+            //fetch freshly created ID
+            $query = $this->_db->prepare('SELECT id FROM user WHERE username = :username');
+            $query->bindValue(':username', $username);
+            $query->execute();
+
+            $id = $query->fetch()[0];
+            //insert in user_meta table
+            $query = "INSERT INTO `user_meta` (`id`, `email`, `sexe`, `dateInscription`) values(:id, :email, :sexe, DATE(NOW()))";
+            $ps = $this->_db->prepare($query);
+            $ps->bindValue(':id', $id, PDO::PARAM_INT);
+            $ps->bindValue(':email', $email, PDO::PARAM_STR);
+            $ps->bindValue(':sexe', $sexe, PDO::PARAM_STR_CHAR);
+
+            if($ps->execute()){
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 } //End of class
 
 /*

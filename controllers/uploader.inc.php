@@ -1,5 +1,5 @@
 <?php
-
+/*
 $folder = CHEMIN_VUES . '/images'; // dossier contenant l'image
 $img = $_FILES["logo"];
 $imgName = $_FILES["logo"]["name"];
@@ -33,4 +33,5 @@ if (isset($img) && $imgError == 0) { // upload de l'image
 } else if (isset($img) && $imgError != 0) { // erreur dès le début
     echo 'Impossible d\'envoyer le fichier';
     exit();
-}
+}*/
+?>

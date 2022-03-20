@@ -74,8 +74,6 @@ require '../controllers/quiz.func.php';
 </html>
 */
 session_start();
-$_SESSION['auth'] = 1;
-$_SESSION['admin'] = 1;
 # Prise du temps actuel au début du script
 $time_start = microtime(true);
 
@@ -115,6 +113,10 @@ switch($action) {
     case 'admin':
         require_once('controllers/AdminController.php');
         $controller = new AdminController($db);
+        break;
+    case 'sign_in':
+        require_once('controllers/SigninController.php');
+        $controller = new SigninController($db);
         break;
     default: # Par défaut, le contrôleur de l'accueil est sélectionné
         require_once('controllers/AccueilController.php');

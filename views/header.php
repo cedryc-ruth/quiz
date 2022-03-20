@@ -20,7 +20,7 @@
                 <input type="password" name="password" placeholder="Mot de passe">
                 <input type="submit" name="submit_login" value="Connexion">
             </form>
-            <a href="signin.php"></a><button>Créer un compte</button>
+            <button><a href="index.php?action=sign_in">Créer un compte</a></button>
         </div>
 
     </div>
