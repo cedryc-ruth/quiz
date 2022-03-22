@@ -118,6 +118,10 @@ switch($action) {
         require_once('controllers/SigninController.php');
         $controller = new SigninController($db);
         break;
+    case 'log_off':
+        require_once('controllers/LogOffController.php');
+        $controller = new LogOffController($db);
+        break;
     default: # Par défaut, le contrôleur de l'accueil est sélectionné
         require_once('controllers/AccueilController.php');
         $controller = new AccueilController($db);

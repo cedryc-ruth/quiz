@@ -31,7 +31,7 @@ class Db
         $ps->execute();
 
         $pass = $ps->fetch()[0];
-        if($pass === $pwd){
+        if(password_verify($pwd, $pass)){
             return 1;
         }
         else return 0;
@@ -45,12 +45,8 @@ class Db
         $ps->bindValue(':username', $username, PDO::PARAM_STR);
 
         if($ps->execute()){
-            //fetch freshly created ID
-            $query = $this->_db->prepare('SELECT id FROM user WHERE username = :username');
-            $query->bindValue(':username', $username);
-            $query->execute();
-
-            $id = $query->fetch()[0];
+            //fetch freshly created user's ID
+            $id = $this->getId($username);
             //insert in user_meta table
             $query = "INSERT INTO `user_meta` (`id`, `email`, `sexe`, `dateInscription`) values(:id, :email, :sexe, DATE(NOW()))";
             $ps = $this->_db->prepare($query);
@@ -63,6 +59,24 @@ class Db
             }
         }
         return 0;
+    }
+
+    public function getId($username){
+        $query = $this->_db->prepare('SELECT id FROM user WHERE username = :username');
+        $query->bindValue(':username', $username);
+        $query->execute();
+
+        return $query->fetch()[0];
+    }
+
+    public function fetchInfos($username){
+        $id = $this->getId($username);
+        $query = 'SELECT * FROM user WHERE id = :id';
+        $ps = $this->_db->prepare($query);
+        $ps->bindValue(':id', $id);
+        $ps->execute();
+
+       return $tabInfos = $ps->fetchAll();
     }
 
 } //End of class

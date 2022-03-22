@@ -31,6 +31,13 @@ class LoginController{
             $pwd = $_POST['password'];
             $auth = $this->_db->login($user, $pwd);
             if ($auth == 1){
+                $_SESSION['auth'] = 1;
+                //fetch all user's infos
+                $infos = $this->_db->fetchInfos($user);
+                 $_SESSION['type'] = $infos['type'];
+                 $_SESSION['userId'] = $infos['id'];
+                 $_SESSION['activated'] = $infos['activated'];
+                 $_SESSION['username'] = $user;
                 header('Location: index.php?action=admin');
             } else {
                 $notification = "Utilisateur et/ou mot de passe incorrect(s)";
