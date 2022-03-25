@@ -36,27 +36,22 @@
 
     </div>
 </header>
-<div>
-    <?php
-    if(isset($_SESSION['type'])){
-        switch($_SESSION['type']){
-            case 0:
-                //Ne rien afficher
-                break;
-            case 1:
-                ?><a href="user.php">Mon compte</a><?php
-                break;
-            case 2:
-                ?><a href="admin.php">Administration</a><?php
-                break;
-        }
-    }
-    ?>
-
-</div>
+<?php
+    //Idéalement cette variable est définie dans le contrôleur donc la vue ne doit pas vérifier son existence
+    $type = $_SESSION['type'] ?? 0;
+?>
+<nav>
+    <ul>
+    <?php if($type==1) { ?>    
+        <li><a href="user.php">Mon compte</a></li>
+    <?php } elseif($type==2) { ?>
+        <li><a href="admin.php">Administration</a></li>
+    <?php } ?>
+    </ul>
+</nav>
 <hr>
 <div>
-    <form action="#" method="get">
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
         <label>
             Filtre :
             <input name="filtre" type="text" placeholder="<?= $filtre ?? 'Recherche' ?>">
